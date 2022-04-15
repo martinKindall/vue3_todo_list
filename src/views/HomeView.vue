@@ -1,28 +1,25 @@
 <script setup>
-  import initTodos from '../todosSetup';
-
-  const {todosIncompleted, todosCompleted, toggle, deleteTodo} = initTodos();
+  import {todosIncompleted, todosCompleted, toggle, deleteTodo} from '../todosSetup';
 </script>
 
 <template>
-  <div class="container">
-    <h2>Todo List</h2>
-    <ul>
-      <li v-for="todo in todosIncompleted" :key="todo.id">
-        <input type="checkbox" @click="toggle(todo.id)">
-        <label>{{ todo.name }}</label>
-        <input type="text">
-        <button class="delete" @click="deleteTodo(todo.id)">Delete</button>
-      </li>
-    </ul>
-    <h2>Completed</h2>
-    <ul>
-      <li v-for="todo in todosCompleted" :key="todo.id">
-        <input type="checkbox" checked @click="toggle(todo.id)">
-        <label>{{ todo.name }}</label>
-        <input type="text">
-        <button class="delete" @click="deleteTodo(todo.id)">Delete</button>
-      </li>
-    </ul>
-  </div>
+  <h3>Todo List</h3>
+  <p v-if="todosIncompleted.length === 0">Nothing todo</p>
+  <ul id="incomplete-tasks">
+    <li v-for="todo in todosIncompleted" :key="todo.id" @click="toggle(todo.id)">
+      <input type="checkbox">
+      <label>{{ todo.name }}</label>
+      <input type="text">
+      <button class="delete" @click="deleteTodo(todo.id)">Delete</button>
+    </li>
+  </ul>
+  <h3>Completed</h3>
+  <ul id="completed-tasks">
+    <li v-for="todo in todosCompleted" :key="todo.id" @click="toggle(todo.id)">
+      <input type="checkbox" checked @click="toggle(todo.id)">
+      <label>{{ todo.name }}</label>
+      <input type="text">
+      <button class="delete" @click="deleteTodo(todo.id)">Delete</button>
+    </li>
+  </ul>
 </template>
