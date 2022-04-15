@@ -8,7 +8,9 @@ const length = computed(() => todos.value.length);
 
 const toggle = (id) => {
   const todo = todos.value.find(t => t.id === id);
-  todo.completed = !todo.completed;
+  if (todo?.completed !== undefined) {
+    todo.completed = !todo.completed;
+  }
 };
 
 const deleteTodo = (id) => {
