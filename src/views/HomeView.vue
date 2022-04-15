@@ -1,7 +1,7 @@
 <script setup>
   import initTodos from '../todosSetup';
 
-  const {todosIncompleted, todosCompleted, toggle} = initTodos();
+  const {todosIncompleted, todosCompleted, toggle, deleteTodo} = initTodos();
 </script>
 
 <template>
@@ -12,7 +12,7 @@
         <input type="checkbox" @click="toggle(todo.id)">
         <label>{{ todo.name }}</label>
         <input type="text">
-        <button class="delete">Delete</button>
+        <button class="delete" @click="deleteTodo(todo.id)">Delete</button>
       </li>
     </ul>
     <h2>Completed</h2>
@@ -21,7 +21,7 @@
         <input type="checkbox" checked @click="toggle(todo.id)">
         <label>{{ todo.name }}</label>
         <input type="text">
-        <button class="delete">Delete</button>
+        <button class="delete" @click="deleteTodo(todo.id)">Delete</button>
       </li>
     </ul>
   </div>
