@@ -1,6 +1,8 @@
 import { mount } from '@vue/test-utils'
 import { test, describe, expect } from 'vitest';
 import HomeView from '../views/HomeView.vue'
+import {todosFactory} from '../todosSetup';
+import todosMock from '../mock/todos';
 
 describe('HelloView.vue integration tests', ()=> {
   test('Title exists', () => {
@@ -10,6 +12,9 @@ describe('HelloView.vue integration tests', ()=> {
   });
 
   test('Todo is completable', async () => {
+    const {update} = todosFactory();
+    update(todosMock);
+
     const wrapper = mount(HomeView);
 
     expect(wrapper.text()).not.toContain('Nothing todo');
