@@ -4,11 +4,12 @@ import { RouterLink, RouterView } from 'vue-router'
 
 <template>
   <header>
-    <div class="container wrapper">
+    <div class="container">
       <div class="row text-center my-2">
         <div class="col-12">
           <nav>
-            <RouterLink to="/">Home</RouterLink>
+            <RouterLink to="/">Todo List</RouterLink>
+            <RouterLink to="/new">New Todo</RouterLink>
           </nav>
         </div>
       </div>
