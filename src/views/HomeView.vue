@@ -1,24 +1,28 @@
 <script setup>
   import initTodos from '../todosSetup';
 
-  const {todos} = initTodos();
+  const {todosIncompleted, todosCompleted, toggle} = initTodos();
 </script>
 
 <template>
   <div class="container">
-    <div class="row text-center my-4">
-      <div class="col-12">
-        <h2>Todo List</h2>
-      </div>
-    </div>
-    <div class="row text-center my-2">
-      <div class="col-12">
-        <ul>
-          <li v-for="todo in todos">
-            {{ todo.name }}
-          </li>
-        </ul>
-      </div>
-    </div>
+    <h2>Todo List</h2>
+    <ul>
+      <li v-for="todo in todosIncompleted" :key="todo.id">
+        <input type="checkbox" @click="toggle(todo.id)">
+        <label>{{ todo.name }}</label>
+        <input type="text">
+        <button class="delete">Delete</button>
+      </li>
+    </ul>
+    <h2>Completed</h2>
+    <ul>
+      <li v-for="todo in todosCompleted" :key="todo.id">
+        <input type="checkbox" checked @click="toggle(todo.id)">
+        <label>{{ todo.name }}</label>
+        <input type="text">
+        <button class="delete">Delete</button>
+      </li>
+    </ul>
   </div>
 </template>
