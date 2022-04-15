@@ -1,7 +1,6 @@
 import { computed, ref } from 'vue'
-import todosMock from './mock/todos';
 
-const todos = ref(todosMock);
+const todos = ref([]);
 const todosIncompleted = computed(() => todos.value.filter(t => !t.completed));
 const todosCompleted = computed(() => todos.value.filter(t => t.completed));
 const length = computed(() => todos.value.length);
@@ -21,6 +20,10 @@ const add = (name) => {
   todos.value.push({id: length.value + 1, name, completed: false});
 };
 
-const todosFactory = () => ({todosIncompleted, todosCompleted, toggle, deleteTodo, add});
+const update = (todosPayload) => {
+  todos.value = todosPayload;
+};
+
+const todosFactory = () => ({todosIncompleted, todosCompleted, toggle, deleteTodo, add, update});
 
 export {todosFactory};
