@@ -1,5 +1,6 @@
 <script setup>
-  import {todosIncompleted, todosCompleted, toggle, deleteTodo} from '../todosSetup';
+  import {todosFactory} from '../todosSetup';
+  const {todosIncompleted, todosCompleted, toggle, deleteTodo} = todosFactory();
 </script>
 
 <template>

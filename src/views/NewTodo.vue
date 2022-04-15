@@ -1,6 +1,8 @@
 <script setup>
-  import {add} from '../todosSetup';
+  import {todosFactory} from '../todosSetup';
   import router from '../router';
+
+  const {add} = todosFactory();
 
   const addAndNavigate = (name) => {
     add(name);

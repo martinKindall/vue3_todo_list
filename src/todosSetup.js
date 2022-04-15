@@ -19,4 +19,6 @@ const add = (name) => {
   todos.value.push({id: length.value + 1, name, completed: false});
 };
 
-export {todosIncompleted, todosCompleted, toggle, deleteTodo, add};
+const todosFactory = () => ({todosIncompleted, todosCompleted, toggle, deleteTodo, add});
+
+export {todosFactory};
